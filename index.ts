@@ -1,6 +1,9 @@
 import { serve, type Server } from "bun";
 import { rm } from "node:fs/promises";
 
+// Bun build plugnis should be imported here if any are used
+// import tailwind from "bun-plugin-tailwind";
+
 import { startDevServer } from 'react-cosmos/dist/devServer/startDevServer.js';
 
 import { build } from "./watch-build";
@@ -24,7 +27,10 @@ async function buildRenderer() {
     entrypoints: ["./cosmos/cosmos.renderer.tsx"],
     outdir: "./cosmos/out",
     sourcemap: "external",
-    plugins: [],
+    plugins: [
+      // You need to add plugins here if you are using any
+      //tailwind
+    ],
     watch: "./examples", // <--- WATCH THE EXAMPLES FOLDER
     extraWatchFiles: ["./cosmos.imports.js"],
     onRebuild(output) {
