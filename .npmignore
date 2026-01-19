@@ -1,0 +1,35 @@
+# Source control
+.git
+.gitignore
+
+# CI/CD
+.github
+
+# Documentation (keep README.md, LICENSE, CHANGELOG.md)
+CONTRIBUTING.md
+
+# Tests
+test
+*.test.ts
+*.spec.ts
+
+# Development
+example
+.editorconfig
+.vscode
+.idea
+
+# Build artifacts (these are in cosmos/out and should not be published)
+cosmos/out
+
+# Logs and temp files
+*.log
+*.tmp
+.DS_Store
+
+# Dependencies
+node_modules
+
+# Environment files
+.env
+.env.*

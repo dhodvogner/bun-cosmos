@@ -4,7 +4,7 @@
 
 import type { RendererConfig, UserModuleWrappers } from 'react-cosmos-core';
 
-import * as fixture0 from './examples/test.fixture';
+import * as fixture0 from './example/fixtures/Button.fixture';
 
 export const rendererConfig: RendererConfig = {
   "webSocketUrl": "ws://192.168.56.1:5000",
@@ -12,7 +12,7 @@ export const rendererConfig: RendererConfig = {
 };
 
 const fixtures = {
-  'examples/test.fixture.tsx': { module: fixture0 }
+  'example/fixtures/Button.fixture.tsx': { module: fixture0 }
 };
 
 const decorators = {};
