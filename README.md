@@ -180,10 +180,10 @@ interface BunCosmosConfig {
 
 ```typescript
 import { startBunCosmos } from "bun-cosmos";
-import tailwindPlugin from "bun-plugin-tailwind";
+import tailwind from "bun-plugin-tailwind";
 
 await startBunCosmos({
-  plugins: [tailwindPlugin()],
+  plugins: [tailwind],
   fixturesDir: "./src/components",
 });
 ```
@@ -238,6 +238,8 @@ await cosmos.start();
 // Later, if needed:
 await cosmos.stop();
 ```
+
+[API Documentation](./API.md)
 
 ## How It Works
 
@@ -306,7 +308,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT © dhodvogner
+[MIT](./LICENSE)
 
 ## Credits
 
