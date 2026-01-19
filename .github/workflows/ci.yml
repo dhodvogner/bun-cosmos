@@ -69,7 +69,7 @@ jobs:
       - name: Build renderer
         run: |
           # Test that the build process works
-          bun build cosmos/cosmos.renderer.tsx --outdir ./cosmos/out --sourcemap external
+          bun build cosmos/cosmos.renderer.tsx --outdir ./cosmos/out --sourcemap=external
 
       - name: Verify build artifacts
         run: |

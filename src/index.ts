@@ -77,6 +77,7 @@ export class BunCosmos {
    */
   private startProxyServer() {
     const { ports } = this.config;
+    const self = this; // Store reference to class instance
 
     this.proxyServer = serve({
       port: ports.proxy,
@@ -92,7 +93,7 @@ export class BunCosmos {
 
         // WebSocket for HMR
         if (url.pathname === "/cosmos-ws") {
-          if (this.proxyServer?.upgrade(req)) return;
+          if (self.proxyServer?.upgrade(req)) return;
           return new Response("Upgrade failed", { status: 500 });
         }
 
