@@ -41,6 +41,7 @@
   "scripts": {
     "start": "bun run example/index.ts",
     "test": "bun test",
+    "validate": "bun run validate-package.ts",
     "prepublishOnly": "bun test"
   },
   "dependencies": {
