@@ -66,6 +66,28 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Generate stub cosmos.imports for build test
+        run: |
+          # Create a minimal stub file for CI build testing
+          # In real usage, React Cosmos generates this automatically
+          cat > cosmos.imports.ts << 'EOF'
+          import type { RendererConfig, UserModuleWrappers } from 'react-cosmos-core';
+          
+          export const rendererConfig: RendererConfig = {
+            "webSocketUrl": "ws://localhost:5000",
+            "rendererUrl": "http://localhost:3008/cosmos.html"
+          };
+          
+          const fixtures = {};
+          const decorators = {};
+          
+          export const moduleWrappers: UserModuleWrappers = {
+            lazy: false,
+            fixtures,
+            decorators
+          };
+          EOF
+
       - name: Build renderer
         run: |
           # Test that the build process works
