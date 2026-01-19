@@ -1,4 +1,4 @@
-// Creadits: This code is adapted from: https://github.com/oven-sh/bun/issues/5866#issuecomment-2691700945
+// Credits: This code is adapted from: https://github.com/oven-sh/bun/issues/5866#issuecomment-2691700945
 // Thanks to @dpeek for the original implementation!
 import type { BuildOutput } from "bun";
 import fs from "node:fs";
@@ -47,9 +47,6 @@ export async function build(config: BuildConfig) {
   if (watch) {
     let fixtureFiles = getFixtureFiles(watch);
 
-    // Resolve extra files to absolute paths for comparison
-    const watchedExtras = new Set(extraWatchFiles.map(absolute));
-
     let debounce: Timer | null = null;
     let pending = false;
 
@@ -64,18 +61,6 @@ export async function build(config: BuildConfig) {
       onRebuild && onRebuild(output);
       pending = false;
       console.log(`[Bun-Cosmos] Rebuilt at ${new Date().toLocaleTimeString()}`);
-    };
-
-    const onChange = (event: string, filename: string | null) => {
-      if (!filename) return;
-
-      // Determine if the changed file is inside the watch dir or is an extra file
-      // fs.watch returns just the filename, not full path, so we must be careful.
-      // For simplicity here, we trigger if it matches our criteria.
-
-      // 1. Check if it's an extra file we are explicitly watching
-      // (Note: fs.watch on a specific file might behave differently regarding 'filename')
-      // Implementation below uses a consolidated watcher logic.
     };
 
     // Watch the main directory
